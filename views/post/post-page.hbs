@@ -1,0 +1,22 @@
+
+<a href="/post/new"><button class="btn btn-primary">New Post</button></a>
+
+<br>
+
+<div class="row post-panel">
+    {{#each posts}}
+        <div class="col-3 card" style="width: 18rem;">
+            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/06/18/17/42/image-1465348_960_720.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{this.title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{this.subtitle}}</h6>
+                <p class="card-text">{{this.body}}</p>
+                <a href="/post/show-post/{{this.slug}}" class="card-link">Show</a>
+                <a href="/post/edit-post/{{this.slug}}" class="card-link">Edit</a>
+                <a href="#" class="card-link">Delete</a>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+
