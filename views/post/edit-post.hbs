@@ -1,6 +1,6 @@
 
 <div class="userForm">
-    <form action="/post/new" method="post" id="post-new-form">
+    <form action="/post/edit-post/{{post.slug}}" method="post" id="post-new-form">
         <div class="form-group">
             <label for="title">Title</label>
             <input type="title" name="title" class="form-control" value="{{post.title}}" id="title" placeholder="Enter name">
@@ -14,7 +14,8 @@
             <br>
             <textarea id="body" name="body" cols="60" rows="10">{{post.body}}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Publish</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
+    <br>
     <a href="/post"><button class="btn btn-primary">All Post</button></a>
 </div>

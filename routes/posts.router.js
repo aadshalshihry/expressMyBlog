@@ -14,7 +14,8 @@ const router = (app) => {
                 user: req.user,
                 posts: posts,
                 currentPage: "post",
-                errorMessage: req.flash('postErrorMessage')
+                errorMessage: req.flash('postErrorMessage'),
+                successMessage: req.flash('postSuccessMessage')
             });
         })
     });
@@ -88,15 +89,28 @@ const router = (app) => {
     /**
      * Post route for edit form
      */
-    app.post('/post/edit-post', (req, res) => {
-        console.log(req.post.slug);
-        Post.findOneAndUpdate({slug: req.post.slug}, {
-            title: req.body.title,
-            subtitle: req.body.subtitle,
-            body: req.body.body,
+    app.post('/post/edit-post/:slug', (req, res) => {
+        Post.findOneAndUpdate({slug: req.curReqPost.slug}, {
+            $set: {
+                title: req.body.title,
+                subtitle: req.body.subtitle,
+                body: req.body.body,
+            }
         }, (err, updatePost) => {
             res.redirect('/post/show-post/'+updatePost.slug);
         });
+    });
+
+    app.get('/post/delete-post/:slug', (req, res) => {
+       Post.deleteOne({slug: req.curReqPost.slug}, (err) => {
+           if (err){
+               req.flash("postErrorMessage", "Post was not deleted");
+               res.redirect('/post');
+           } else {
+               req.flash("postSuccessMessage", "Post deleted successfully");
+               res.redirect('/post');
+           }
+       });
     });
 
     /**

@@ -17,12 +17,14 @@ import indexRouter from './routes/index.router';
 import authRouter from './routes/auth.router';
 import userRouter from './routes/users.router';
 import postRouter from './routes/posts.router';
+import config from "./utils/hbsConfig";
 
 // import utlis
-import {hbsHelper} from './utils';
+import hbsConfig from './utils/hbsConfig';
 
 // Init express
 const app = express();
+global.appRoot = path.resolve(__dirname);
 
 // asgin mongoose.Proimse either to global or to bluebird
 mongoose.Promise = global.Promise;
@@ -32,7 +34,8 @@ const db = mongoose.connect('mongodb://localhost/expressMyBlog')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-hbsHelper();
+hbsConfig();
+
 
 app.use(logger('dev'));
 app.use(express.json());

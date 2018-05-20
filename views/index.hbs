@@ -3,13 +3,27 @@
 
 <div class="row post-panel">
     {{#each posts}}
-        <div class="col-3 card" style="width: 18rem;">
-            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/06/18/17/42/image-1465348_960_720.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{this.title}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{this.subtitle}}</h6>
-                <p class="card-text">{{this.body}}</p>
+        {{> showAllPostCards }}
+    {{/each}}
+
+    <div class="rating large star-icon direction-rtl value-1 half color-default label-top">
+        <div class="label-value">1.5</div>
+        <div class="star-container">
+            <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+            </div>
+            <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
+            </div>
+            <div class="star">
+                <i class="star-empty"></i>
+                <i class="star-half"></i>
+                <i class="star-filled"></i>
             </div>
         </div>
-    {{/each}}
+    </div>
 </div>
