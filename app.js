@@ -17,7 +17,6 @@ import indexRouter from './routes/index.router';
 import authRouter from './routes/auth.router';
 import userRouter from './routes/users.router';
 import postRouter from './routes/posts.router';
-import config from "./utils/hbsConfig";
 
 // import utlis
 import hbsConfig from './utils/hbsConfig';
@@ -29,7 +28,7 @@ global.appRoot = path.resolve(__dirname);
 // asgin mongoose.Proimse either to global or to bluebird
 mongoose.Promise = global.Promise;
 // connect and init mongoose
-const db = mongoose.connect('mongodb://localhost/expressMyBlog')
+mongoose.connect('mongodb://localhost/expressMyBlog');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -87,7 +86,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
