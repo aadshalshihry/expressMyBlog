@@ -1,9 +1,33 @@
-<div class="col-3 card" style="width: 18rem;">
-    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/06/18/17/42/image-1465348_960_720.jpg" alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">{{this.title}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{this.subtitle}}</h6>
-        <p class="card-text">{{this.body}}</p>
-        {{ renderUserPostCardLinks }}
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand">Blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item {{activePageHelper currentPage "home"}}">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                {{#if user}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signout">Sign-out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{activePageHelper currentPage "profile"}}" href="/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{activePageHelper currentPage "post"}}" href="/post">Post</a>
+                    </li>
+                {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link {{activePageHelper currentPage "login"}}" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{activePageHelper currentPage "signup"}}" href="/signup">Sign-up</a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
     </div>
-</div>
+</nav>

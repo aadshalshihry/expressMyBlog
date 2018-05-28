@@ -2,11 +2,10 @@
 <p>Welcome to {{title}}</p>
 
 <div class="row post-panel">
-    {{#each posts}}
-        {{> showAllPostCards }}
-    {{/each}}
+    {{#each posts}} {{> showAllPostCards }} {{/each}}
+</div>
 
-    <div class="rating large star-icon direction-rtl value-1 half color-default label-top">
+    {{!-- <div class="rating large star-icon direction-rtl value-1 half color-default label-top">
         <div class="label-value">1.5</div>
         <div class="star-container">
             <div class="star">
@@ -25,5 +24,4 @@
                 <i class="star-filled"></i>
             </div>
         </div>
-    </div>
-</div>
+    </div> --}}

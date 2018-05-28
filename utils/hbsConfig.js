@@ -17,13 +17,13 @@ const config = () => {
   });
 
     hbs.registerHelper('renderUserPostCardLinks', function (user) {
-        let t = user.data.root.user ;
+        let userObj = user.data.root.user ;
         let slug = this.slug;
         let str = "";
         str += `<a href="/post/show-post/${slug}" class="card-link">Show</a>`;
         str += `<a href="/post/edit-post/${slug}" class="card-link">Edit</a>`;
         str += `<a href="/post/delete-post/${slug}" class="card-link"  id="post-delete-btn">Delete</a>`;
-        if ( t.id.toString() === this.user.toString()) {
+        if ( userObj && userObj.id.toString() === this.user.toString()) {
             return new hbs.SafeString(str);
         }
     });

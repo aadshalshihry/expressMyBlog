@@ -435,7 +435,6 @@ Rating Component
   transform: rotate(360deg); }
 
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
@@ -443,5 +442,8 @@ a {
 
 .container {
   margin-top: 20px; }
+
+.blue {
+  background: blue; }
 
 /*# sourceMappingURL=style.css.map */

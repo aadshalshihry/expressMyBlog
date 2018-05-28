@@ -1,64 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>{{title}}</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">TodoCMV</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.0.0-19/collection/icon/icon.css">
+    <link rel='stylesheet' type="text/css" href='/stylesheets/style.css' />
+</head>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item {{activePageHelper currentPage "home"}}">
-                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-              </li>
-              {{#if user}}
-                  <li class="nav-item">
-                      <a class="nav-link" href="/signout">Sign-out</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link {{activePageHelper currentPage "profile"}}" href="/profile">Profile</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link {{activePageHelper currentPage "post"}}" href="/post">Post</a>
-                  </li>
-              {{else}}
-                  <li class="nav-item">
-                      <a class="nav-link {{activePageHelper currentPage "login"}}" href="/login">Login</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link {{activePageHelper currentPage "signup"}}" href="/signup">Sign-up</a>
-                  </li>
-              {{/if}}
-          </ul>
-      </div>
-  </nav>
+<body>
 
-  {{# if user.admin}}
-      <h3>Welcome admin</h3>
-  {{/if}}
-  <div class="container">
-      {{# if errorMessage }}
-          <div class="alert alert-danger">
-              * {{ errorMessage }}
-          </div>
-      {{else if successMessage}}
-          <div class="alert alert-info">
-              * {{ successMessage }}
-          </div>
-      {{/if}}
+    {{> layout_header }} {{# if user.admin}}
+    <h3>Welcome admin</h3>
+    {{/if}}
+    <div class="container">
+        {{# if errorMessage }}
+        <div class="alert alert-danger">
+            * {{ errorMessage }}
+        </div>
+        {{else if successMessage}}
+        <div class="alert alert-info">
+            * {{ successMessage }}
+        </div>
+        {{/if}} 
+        <div class="row">
+            <div class="col-sm-12 col-md-9 col-lg-10">
+                {{{body}}}
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-2">
+                <p>Some...................................................</p>
+                <p>Some....................</p>
+                <p>Some....................</p>
+                <p>Some....................</p>
+                <p>Some....................</p>
+            </div>
 
-      {{{body}}}
-  </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-  <script src="/javascripts/main.js"></script>
-  </body>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <script src="/javascripts/main.js"></script>
+</body>
+
 </html>

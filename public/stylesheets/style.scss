@@ -1,7 +1,7 @@
 @import "../../node_modules/css-star-rating/scss/star-rating";
 
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -11,4 +11,8 @@ a{
 
 .container {
   margin-top: 20px;
+}
+
+.blue {
+  background: blue;
 }
