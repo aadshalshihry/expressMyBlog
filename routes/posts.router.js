@@ -1,5 +1,6 @@
 import {isUserLoggedIn} from "./auth.router";
 import Post from '../models/post.model';
+import PostUserFeed from '../models/post_user_feed.model';
 
 
 const router = (app) => {
@@ -8,7 +9,7 @@ const router = (app) => {
      * Render new post form
      */
     app.get('/post', isUserLoggedIn, (req, res) => {
-        Post.find({user: req.user.id}).exec((err, posts) => {
+        Post.find({userRef: req.user.id}).exec((err, posts) => {
             res.render('post/post-page', {
                 title: 'Past',
                 user: req.user,
@@ -39,11 +40,20 @@ const router = (app) => {
      */
     app.post('/post/new', isUserLoggedIn, (req, res) => {
         const {title, subtitle, body} = req.body;
-        let post = new Post;
-        post.title = title;
-        post.body = body;
-        post.subtitle = subtitle;
-        post.user = req.user.id;
+
+        // create new post
+        let post = new Post({
+            title, subtitle, body, userRef: req.user.id
+        });
+
+        // create feed for the post
+        let postUserFeed = new PostUserFeed({
+            postRef: post.id,
+            userRef: post.userRef
+        });
+
+        // add the reference of postUserFeed to the new post model
+        post.postUserFeedRef = postUserFeed;
         post.save((err, result) => {
             if(err){
                 console.log('Err post/new');
@@ -51,11 +61,13 @@ const router = (app) => {
                 req.flash("postErrorMessage", "Post was not created.");
                 res.redirect('new')
             } else {
-                console.log('Else post/new');
-                req.flash("postSuccessMessage", "Post created successfully");
-                res.redirect('/post');
+                postUserFeed.save((err, p) => {
+                    console.log('Else post/new');
+                    req.flash("postSuccessMessage", "Post created successfully");
+                    res.redirect('/post');
+                });
             }
-        })
+        });
     });
 
     /**

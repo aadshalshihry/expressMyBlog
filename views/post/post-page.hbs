@@ -1,12 +1,9 @@
-
-<a href="/post/new"><button class="btn btn-primary">New Post</button></a>
+<a href="/post/new">
+    <button class="btn btn-primary">New Post</button>
+</a>
 
 <br>
 
 <div class="row post-panel">
-    {{#each posts}}
-        {{> showAllPostCards }}
-    {{/each}}
+    {{#each posts}} {{> showAllPostCards }} {{/each}}
 </div>
-
-

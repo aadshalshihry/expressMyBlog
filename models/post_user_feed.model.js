@@ -1,8 +1,5 @@
 import mongoose from 'mongoose';
-import URLSlugs from 'mongoose-url-slugs';
-
 const Schema = mongoose.Schema;
-
 
 const schema = new mongoose.Schema({
     postRef: {type: Schema.Types.ObjectId, ref: 'Post', required: true},
@@ -20,4 +17,4 @@ const schema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model('PostUserFeed', schema);
+export default mongoose.model('PostUserFeed', schema);
