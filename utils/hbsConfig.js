@@ -23,11 +23,24 @@ const config = () => {
        
         str += `<a href="/post/show-post/${slug}" class="card-link">Show</a>`;
         str += `<a href="/post/edit-post/${slug}" class="card-link">Edit</a>`;
-        str += `<a href="/post/delete-post/${slug}" class="card-link"  id="post-delete-btn">Delete</a></p>`;
-        if ( userObj && userObj.id.toString() === this.userRef.toString()) {
-            return new hbs.SafeString(str);
-        }
+      str += `<a href="/post/delete-post/${slug}" class="card-link"  id="post-delete-btn">Delete</a></p>`;
+      if ( userObj && userObj.id.toString() === this.userRef.toString()) {
+        return new hbs.SafeString(str);
+      }
     });
+
+  hbs.registerHelper('renderLikenessIcon', function(likeness) {
+    let result = "";
+    if(likeness === 'none') {
+
+    } else if(likeness === '') {
+
+    } else if(likeness === '') {
+
+    }
+
+    return new hbs
+  });
 
 };
 

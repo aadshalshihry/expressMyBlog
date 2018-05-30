@@ -8,7 +8,6 @@ const router = (app) => {
     app.get('/', function(req, res) {
         Post.find().populate('postUserFeedRef').sort('-updatedAt').exec((err, posts) => {
             console.log(posts);
-                        
             res.render('index', {
                 title: '',
                 user: req.user,

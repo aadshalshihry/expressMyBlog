@@ -5,14 +5,14 @@ import User from './models/user.model';
 const passportConfig = (passport) => {
 
     passport.serializeUser((user, done) => {
-        done(null, user.id);
+      done(null, user);
     });
 
     passport.deserializeUser((id, done) => {
         User.findById(id, (err, user) => {
-            const {id, name, username, email} = user;
-            const result = {id, name, username, email};
-            done(err, result);
+          const {id, name, username, email} = user;
+          const result = {id, name, username, email};
+          done(err, user);
         });
     });
 
